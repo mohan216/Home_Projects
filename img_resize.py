@@ -19,3 +19,12 @@ for filename in os.listdir(source_folder):
         img.save(os.path.join(output_folder, filename))
 
 
+
+# from PIL import Image
+# img = Image.open(r"C:\Users\mohan\PycharmProjects\Home_projects\Static\Mom\img2.jpg")
+# rotated_img = img.rotate(180, expand=True)
+# rotated_img.save(r"C:\Users\mohan\PycharmProjects\Home_projects\Static\Mom\img2.jpg")
+# img.close()
+# rotated_img.close()
+
+

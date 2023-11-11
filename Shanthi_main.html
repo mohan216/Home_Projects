@@ -8,7 +8,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ta">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,13 +75,15 @@
     </nav>
 
 
-    <div id="carouselExampleIndicators" class="carousel slide dark">
+    <div id="carouselExampleIndicators" class="carousel slide dark" style="padding: 20px;">
       <div class="carousel-indicators">
 
       </div>
       <div class="carousel-inner">
         <!-- Images will be dynamically loaded here -->
-          <br><br><br><br><br><br><h2>Welcome to family photos.</h2><br><br><br><br><br><br>
+          <br><br><br><br><br><br><h2>Welcome to family photos.</h2><br><br>
+          <h2>குடும்ப படங்களுக்கு வரவேற்கிறோம்.</h2>
+          <br><br><br><br>
       </div>
       <!-- Carousel Control Buttons -->
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -149,7 +151,7 @@
         function initial_carousel(){
         $('#carouselExampleIndicators .carousel-inner').empty();
             $('#carouselExampleIndicators .carousel-indicators').empty();
-            $('#carouselExampleIndicators .carousel-inner').append('<br><br><br><br><br><br><h2>Welcome to family photos.</h2><br><br><br><br><br><br>');
+            $('#carouselExampleIndicators .carousel-inner').append('<br><br><br><br><br><br><h2>Welcome to family photos.</h2><br><br><h2>குடும்ப படங்களுக்கு வரவேற்கிறோம்.</h2><br><br><br><br>');
         }
     </script>
 
