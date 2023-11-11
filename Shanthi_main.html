@@ -1,0 +1,157 @@
+<!-- TODOs -->
+<!-- 1. Create Navigation bar with Mom, Kamalabai, Ramu thata -->
+<!-- 2. Use slideshow to create a slideshow of Mom images -->
+<!-- 3. The slideshow should present images corresponding to the selection the user made in the Navigation bar -->
+<!-- 4. Assume images are present in the static folder. Inside static, the Mom folder contains Mom images, Kamalabai folder
+     contains Kamalabai images, respectively -->
+<!-- 5. Give a footer stating that the website is created by Mohan and also include copyright details. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Photo Gallery</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    .carousel {
+        width: 50%; /* Reduce the width to 75% of the original size */
+        height: 40%;
+        margin: 0 auto; /* Center the carousel horizontally */
+    }
+    .dark-mode-active {
+    background-color: #222;
+    color: #fff;
+    }
+
+    </style>
+
+</head>
+<body>
+    <!-- Navigation Bar -->
+<!--    <nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--        <a class="navbar-brand" href="#">Family Photo Gallery</a>-->
+<!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarNav">-->
+<!--            <ul class="navbar-nav">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#mom">Mom</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#kamalabai">Kamalabai</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#ramuthata">Ramuthata</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </nav>-->
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#" onclick="initial_carousel()">Family Photo Gallery</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="showImages('Mom2')">Mom</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="showImages('Cat2')">Cat</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="darkModeSwitch">
+          <label class="form-check-label" for="darkModeSwitch">Enable Dark Mode &nbsp;&nbsp; </label>
+        </div>
+    </nav>
+
+
+    <div id="carouselExampleIndicators" class="carousel slide dark">
+      <div class="carousel-indicators">
+
+      </div>
+      <div class="carousel-inner">
+        <!-- Images will be dynamically loaded here -->
+          <br><br><br><br><br><br><h2>Welcome to family photos.</h2><br><br><br><br><br><br>
+      </div>
+      <!-- Carousel Control Buttons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+
+    <!-- Footer -->
+    <br><br>
+    <footer class="bg-dark text-light text-center py-2">
+        <p>&copy; <?php echo date("Y"); ?> Family Photo Gallery | Created by Mohan</p>
+    </footer>
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <script>
+
+        const darkModeSwitch = document.getElementById('darkModeSwitch');
+        const darkElements = document.querySelectorAll('.dark');
+
+        darkModeSwitch.addEventListener('change', function () {
+            darkElements.forEach((element) => {
+                element.classList.toggle('dark-mode-active');
+            });
+        });
+
+
+        function showImages(category) {
+            // Clear existing images and indicators
+            $('#carouselExampleIndicators .carousel-inner').empty();
+            $('#carouselExampleIndicators .carousel-indicators').empty();
+
+            // Fetch and display images based on the category and naming convention
+            console.log('showImages called with category:', category);
+
+            for (let i = 1; i <= 5; i++) {
+                let imageSrc = `Static/${category}/img${i}.jpg`;
+                let isActive = i === 1 ? 'active' : '';
+
+                // Add the image to the carousel
+                $('#carouselExampleIndicators .carousel-inner').append(
+                    `<div class="carousel-item ${isActive}">
+                        <img src="${imageSrc}" class="d-block w-100" alt="${category} ${i}">
+                    </div>`
+                );
+
+                // Add the indicator for the image
+                $('#carouselExampleIndicators .carousel-indicators').append(
+                    `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${i - 1}" class="${isActive}" aria-label="Slide ${i}"></button>`
+                );
+            }
+
+            // Initialize the carousel
+            $('#carouselExampleIndicators').carousel();
+        }
+
+        function initial_carousel(){
+        $('#carouselExampleIndicators .carousel-inner').empty();
+            $('#carouselExampleIndicators .carousel-indicators').empty();
+            $('#carouselExampleIndicators .carousel-inner').append('<br><br><br><br><br><br><h2>Welcome to family photos.</h2><br><br><br><br><br><br>');
+        }
+    </script>
+
+</body>
+</html>
